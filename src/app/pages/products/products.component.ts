@@ -79,8 +79,9 @@ export class ProductsComponent implements OnInit {
 
     readProducts = async () => {
         try{
+            await fetch("https://real-estate-back.up.railway.app/read")
             // await fetch("https://angular-real-estate-back.herokuapp.com/read")
-            await fetch("http://localhost:4000/read")
+            // await fetch("http://localhost:4000/read")
               .then( response => response.json() )
               .then( data => {
                   // this.products = data;
@@ -96,8 +97,9 @@ export class ProductsComponent implements OnInit {
 
     readProductsReverse = async () => {
       try{
+          await fetch("https://real-estate-back.up.railway.app/read")
           // await fetch("https://angular-real-estate-back.herokuapp.com/read")
-          await fetch("http://localhost:4000/read")
+          // await fetch("http://localhost:4000/read")
             .then( response => response.json() )
             .then( data => {
                 // this.products = data.reverse();
@@ -114,8 +116,9 @@ export class ProductsComponent implements OnInit {
     // Deletes product by id in Rest API
     deleteProduct = async (id:string) => {
         try{
+            await fetch(`https://real-estate-back.up.railway.app/delete/${id}`, {
             // await fetch(`https://angular-real-estate-back.herokuapp.com/delete/${id}`, {
-            await fetch(`http://localhost:4000/delete/${id}`, {
+            // await fetch(`http://localhost:4000/delete/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json' ,
@@ -152,8 +155,9 @@ export class ProductsComponent implements OnInit {
         try{
             this.id = Math.floor(Math.random() * 10000000000000000);
 
+            await fetch(`https://real-estate-back.up.railway.app/create`, {
             // await fetch(`https://angular-real-estate-back.herokuapp.com/create`, {
-            await fetch(`http://localhost:4000/create`, {
+            // await fetch(`http://localhost:4000/create`, {
               method: 'POST',
                 headers: {
                     'Content-Type': 'application/json' ,
@@ -229,8 +233,10 @@ export class ProductsComponent implements OnInit {
       this.imgUploads = event.target.files[0].name;
 
       try{
+
+        await fetch(`https://real-estate-back.up.railway.app/upload`, {
         // await fetch(`https://angular-real-estate-back.herokuapp.com/upload`, {
-        await fetch(`http://localhost:4000/upload`, {
+        // await fetch(`http://localhost:4000/upload`, {
             method: 'POST',
             body: formData
         });
